@@ -1,0 +1,24 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const helmet_1 = __importDefault(require("helmet"));
+const auth_1 = __importDefault(require("./routes/auth"));
+const forecasts_1 = __importDefault(require("./routes/forecasts"));
+const dashboards_1 = __importDefault(require("./routes/dashboards"));
+const exports_1 = __importDefault(require("./routes/exports"));
+const market_1 = __importDefault(require("./routes/market"));
+const app = (0, express_1.default)();
+app.use((0, helmet_1.default)());
+app.use((0, cors_1.default)());
+app.use(express_1.default.json());
+app.get("/health", (_req, res) => res.json({ status: "ok" }));
+app.use("/api/auth", auth_1.default);
+app.use("/api/forecasts", forecasts_1.default);
+app.use("/api/dashboards", dashboards_1.default);
+app.use("/api/exports", exports_1.default);
+app.use("/api/market-intelligence", market_1.default);
+exports.default = app;

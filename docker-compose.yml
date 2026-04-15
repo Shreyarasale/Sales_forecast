@@ -1,0 +1,54 @@
+version: "3.9"
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: sop-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sop_platform
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  forecast-engine:
+    image: python:3.11-slim
+    container_name: forecast-engine
+    working_dir: /app
+    volumes:
+      - ./forecast-engine:/app
+    command: sh -c "pip install -r requirements.txt && python app.py"
+    ports:
+      - "5001:5001"
+
+  backend:
+    image: node:20
+    container_name: sop-backend
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    environment:
+      PORT: 3000
+      JWT_SECRET: super-secret-for-demo
+      PYTHON_ENGINE_URL: http://forecast-engine:5001
+    command: sh -c "npm install && npm run dev"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - forecast-engine
+
+  frontend:
+    image: node:20
+    container_name: sop-frontend
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    command: sh -c "npm install && npm run dev -- --host"
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:

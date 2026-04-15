@@ -1,0 +1,125 @@
+:root {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #1f2937;
+  background: #f5f7fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.login-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.login-card {
+  width: min(420px, 90vw);
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #d8deeb;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(22, 35, 77, 0.06);
+}
+
+.stack {
+  display: grid;
+  gap: 16px;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.row-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.grid-2 {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-5 {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+label {
+  display: grid;
+  gap: 6px;
+}
+
+input,
+button {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #a9b5cf;
+}
+
+button {
+  cursor: pointer;
+  background: #0f5ae0;
+  color: #fff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border-bottom: 1px solid #ebeff8;
+  padding: 8px;
+  text-align: left;
+}
+
+.error {
+  color: #b42318;
+}
+
+.status {
+  margin-top: 8px;
+  color: #0b6f3b;
+}
+
+@media (max-width: 900px) {
+  .grid-2,
+  .grid-5 {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
