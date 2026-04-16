@@ -135,10 +135,7 @@ Enhanced with:
 
 ---
 
-### 7. **API Configuration**
-```python
-OPENROUTER_API_KEY = "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"
-OPENROUTER_API_URL = "https://openrouter.io/api/v1/chat/completions"
+
 
 Features:
 - Generate market insights on demand
