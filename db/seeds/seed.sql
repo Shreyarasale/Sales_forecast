@@ -7,6 +7,6 @@ ON DUPLICATE KEY UPDATE username = VALUES(username);
 
 INSERT INTO market_intelligence (title, factor_percent, customer_id)
 VALUES
-  ('Tractor segment is projected to grow by 10 percent this quarter', 10.00, 1),
-  ('Mahindra announced capex expansion in west India', 6.00, 1),
-  ('Farm equipment replacement demand improved in north region', 4.00, 2);
+  ('Customer 1 segment is projected to grow by 10 percent this quarter', 10.00, 1),
+  ('Customer 1 announced capex expansion in west India', 6.00, 1),
+  ('Customer 2 replacement demand improved in north region', 4.00, 2);

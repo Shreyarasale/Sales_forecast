@@ -129,26 +129,26 @@ def init_db() -> None:
 
     cur.execute("DELETE FROM customers")
     customers = [
-        ("Mahindra Tractors", "Tractors & Farm Equipment", "West India", "john.wicks"),
-        ("Sonalika", "Tractors & Farm Equipment", "Central India", "john.wicks"),
-        ("TAFE", "Tractors & Farm Equipment", "South India", "john.wicks"),
-        ("Escorts Agri Machinery", "Tractors & Farm Equipment", "North India", "john.wicks"),
-        ("John Deere India", "Tractors & Farm Equipment", "North India", "john.wicks"),
-        ("Eicher Tractors", "Tractors & Farm Equipment", "Central India", "john.wicks"),
-        ("CNH Industrial India", "Tractors & Farm Equipment", "West India", "john.wicks"),
-        ("Swaraj Engines", "Tractors & Farm Equipment", "North India", "john.wicks"),
+        ("AgroNova", "Tractors & Farm Equipment", "West India", "john.wicks"),
+        ("TractoMax", "Tractors & Farm Equipment", "Central India", "john.wicks"),
+        ("FarmX", "Tractors & Farm Equipment", "South India", "john.wicks"),
+        ("GreenField Motors", "Tractors & Farm Equipment", "North India", "john.wicks"),
+        ("CropTech", "Tractors & Farm Equipment", "North India", "john.wicks"),
+        ("PlowPro Industries", "Tractors & Farm Equipment", "Central India", "john.wicks"),
+        ("HarvestEdge", "Tractors & Farm Equipment", "West India", "john.wicks"),
+        ("FieldForce", "Tractors & Farm Equipment", "North India", "john.wicks"),
         ("Ashok Leyland", "Commercial Vehicles", "South India", "john.wicks"),
-        ("Force Motors", "Commercial Vehicles", "West India", "john.wicks"),
-        ("Tata Motors CV", "Commercial Vehicles", "West India", "john.wicks"),
-        ("VE Commercial Vehicles", "Commercial Vehicles", "Central India", "john.wicks"),
-        ("Bajaj Auto", "Two Wheelers", "West India", "john.wicks"),
-        ("Hero MotoCorp", "Two Wheelers", "North India", "john.wicks"),
-        ("TVS Motor", "Two Wheelers", "South India", "john.wicks"),
-        ("Royal Enfield", "Two Wheelers", "South India", "john.wicks"),
-        ("JCB India", "Construction Equipment", "North India", "john.wicks"),
-        ("Caterpillar India", "Construction Equipment", "South India", "john.wicks"),
-        ("Komatsu India", "Construction Equipment", "West India", "john.wicks"),
-        ("Bosch Mobility", "Automotive Components", "South India", "john.wicks"),
+        ("CargoMotive", "Commercial Vehicles", "West India", "john.wicks"),
+        ("TransVantage", "Commercial Vehicles", "West India", "john.wicks"),
+        ("FleetWorks", "Commercial Vehicles", "Central India", "john.wicks"),
+        ("MotoSwift", "Two Wheelers", "West India", "john.wicks"),
+        ("RideOn Motors", "Two Wheelers", "North India", "john.wicks"),
+        ("Velocity Bikes", "Two Wheelers", "South India", "john.wicks"),
+        ("UrbanCruise", "Two Wheelers", "South India", "john.wicks"),
+        ("BuildPro Equipments", "Construction Equipment", "North India", "john.wicks"),
+        ("ConstructoTech", "Construction Equipment", "South India", "john.wicks"),
+        ("EarthMover Inc.", "Construction Equipment", "West India", "john.wicks"),
+        ("AutoCore Components", "Automotive Components", "South India", "john.wicks"),
     ]
     cur.executemany(
         "INSERT INTO customers (name, industry, region, account_manager_username) VALUES (?, ?, ?, ?)",
@@ -209,19 +209,19 @@ def init_db() -> None:
     if cur.fetchone()[0] == 0:
         customers = [
             # John Wicks customers
-            ("Mahindra Tractors",      "Tractors & Farm Equipment", "West India",    "john.wicks"),
-            ("Sonalika",               "Tractors & Farm Equipment", "Central India", "john.wicks"),
-            ("TAFE",                   "Tractors & Farm Equipment", "South India",   "john.wicks"),
-            ("Escorts Agri Machinery", "Tractors & Farm Equipment", "North India",   "john.wicks"),
+            ("AgroNova",      "Tractors & Farm Equipment", "West India",    "john.wicks"),
+            ("TractoMax",     "Tractors & Farm Equipment", "Central India", "john.wicks"),
+            ("FarmX",         "Tractors & Farm Equipment", "South India",   "john.wicks"),
+            ("GreenField Motors", "Tractors & Farm Equipment", "North India",   "john.wicks"),
             # Priya Sharma customers
-            ("John Deere India",       "Tractors & Farm Equipment", "North India",   "priya.sharma"),
-            ("Eicher Tractors",        "Tractors & Farm Equipment", "Central India", "priya.sharma"),
-            ("CNH Industrial India",   "Tractors & Farm Equipment", "West India",    "priya.sharma"),
+            ("CropTech",       "Tractors & Farm Equipment", "North India",   "priya.sharma"),
+            ("PlowPro Industries", "Tractors & Farm Equipment", "Central India", "priya.sharma"),
+            ("HarvestEdge",    "Tractors & Farm Equipment", "West India",    "priya.sharma"),
             # Rahul Verma customers
-            ("Ashok Leyland",          "Commercial Vehicles",       "South India",   "rahul.verma"),
-            ("Force Motors",           "Commercial Vehicles",       "West India",    "rahul.verma"),
-            ("Bajaj Auto",             "Two Wheelers",              "West India",    "rahul.verma"),
-            ("Hero MotoCorp",          "Two Wheelers",              "North India",   "rahul.verma"),
+            ("Ashok Leyland",  "Commercial Vehicles",       "South India",   "rahul.verma"),
+            ("CargoMotive",    "Commercial Vehicles",       "West India",    "rahul.verma"),
+            ("MotoSwift",      "Two Wheelers",              "West India",    "rahul.verma"),
+            ("RideOn Motors",  "Two Wheelers",              "North India",   "rahul.verma"),
         ]
         cur.executemany(
             "INSERT INTO customers (name, industry, region, account_manager_username) VALUES (?, ?, ?, ?)",
@@ -231,113 +231,112 @@ def init_db() -> None:
     cur.execute("SELECT COUNT(*) FROM sales_history")
     if cur.fetchone()[0] == 0:
         history = [
-            # ── Mahindra Tractors ──────────────────────────────────────────────
-            ("Mahindra Tractors", "6205-2RS", "2025-04", 540), ("Mahindra Tractors", "6205-2RS", "2025-05", 580),
-            ("Mahindra Tractors", "6205-2RS", "2025-06", 620), ("Mahindra Tractors", "6205-2RS", "2025-07", 670),
-            ("Mahindra Tractors", "6205-2RS", "2025-08", 700), ("Mahindra Tractors", "6205-2RS", "2025-09", 730),
-            ("Mahindra Tractors", "6205-2RS", "2025-10", 650), ("Mahindra Tractors", "6205-2RS", "2025-11", 720),
-            ("Mahindra Tractors", "6205-2RS", "2025-12", 850), ("Mahindra Tractors", "6205-2RS", "2026-01", 920),
-            ("Mahindra Tractors", "6205-2RS", "2026-02", 1100),("Mahindra Tractors", "6205-2RS", "2026-03", 1250),
-            ("Mahindra Tractors", "6206-ZZ",  "2025-04", 320), ("Mahindra Tractors", "6206-ZZ",  "2025-05", 360),
-            ("Mahindra Tractors", "6206-ZZ",  "2025-06", 390), ("Mahindra Tractors", "6206-ZZ",  "2025-07", 410),
-            ("Mahindra Tractors", "6206-ZZ",  "2025-08", 430), ("Mahindra Tractors", "6206-ZZ",  "2025-09", 440),
-            ("Mahindra Tractors", "6206-ZZ",  "2025-10", 425), ("Mahindra Tractors", "6206-ZZ",  "2025-11", 480),
-            ("Mahindra Tractors", "6206-ZZ",  "2025-12", 520), ("Mahindra Tractors", "6206-ZZ",  "2026-01", 650),
-            ("Mahindra Tractors", "6206-ZZ",  "2026-02", 720), ("Mahindra Tractors", "6206-ZZ",  "2026-03", 800),
-            ("Mahindra Tractors", "6207-RS",  "2025-04", 210), ("Mahindra Tractors", "6207-RS",  "2025-05", 240),
-            ("Mahindra Tractors", "6207-RS",  "2025-06", 270), ("Mahindra Tractors", "6207-RS",  "2025-07", 290),
-            ("Mahindra Tractors", "6207-RS",  "2025-08", 300), ("Mahindra Tractors", "6207-RS",  "2025-09", 310),
-            ("Mahindra Tractors", "6207-RS",  "2025-10", 310), ("Mahindra Tractors", "6207-RS",  "2025-11", 360),
-            ("Mahindra Tractors", "6207-RS",  "2025-12", 410), ("Mahindra Tractors", "6207-RS",  "2026-01", 480),
-            ("Mahindra Tractors", "6207-RS",  "2026-02", 550), ("Mahindra Tractors", "6207-RS",  "2026-03", 620),
-            ("Mahindra Tractors", "6208-2RS", "2025-04", 180), ("Mahindra Tractors", "6208-2RS", "2025-05", 200),
-            ("Mahindra Tractors", "6208-2RS", "2025-06", 220), ("Mahindra Tractors", "6208-2RS", "2025-07", 245),
-            ("Mahindra Tractors", "6208-2RS", "2025-08", 260), ("Mahindra Tractors", "6208-2RS", "2025-09", 275),
-            ("Mahindra Tractors", "6208-2RS", "2025-10", 290), ("Mahindra Tractors", "6208-2RS", "2025-11", 320),
-            ("Mahindra Tractors", "6208-2RS", "2025-12", 370), ("Mahindra Tractors", "6208-2RS", "2026-01", 420),
-            ("Mahindra Tractors", "6208-2RS", "2026-02", 480), ("Mahindra Tractors", "6208-2RS", "2026-03", 540),
-            ("Mahindra Tractors", "30205",    "2025-04", 140), ("Mahindra Tractors", "30205",    "2025-05", 155),
-            ("Mahindra Tractors", "30205",    "2025-06", 170), ("Mahindra Tractors", "30205",    "2025-07", 185),
-            ("Mahindra Tractors", "30205",    "2025-08", 200), ("Mahindra Tractors", "30205",    "2025-09", 215),
-            ("Mahindra Tractors", "30205",    "2025-10", 230), ("Mahindra Tractors", "30205",    "2025-11", 260),
-            ("Mahindra Tractors", "30205",    "2025-12", 300), ("Mahindra Tractors", "30205",    "2026-01", 340),
-            ("Mahindra Tractors", "30205",    "2026-02", 390), ("Mahindra Tractors", "30205",    "2026-03", 440),
-            # ── Sonalika ──────────────────────────────────────────────────────
-            ("Sonalika", "6205-2RS", "2025-04", 410), ("Sonalika", "6205-2RS", "2025-05", 450),
-            ("Sonalika", "6205-2RS", "2025-06", 490), ("Sonalika", "6205-2RS", "2025-07", 520),
-            ("Sonalika", "6205-2RS", "2025-08", 545), ("Sonalika", "6205-2RS", "2025-09", 560),
-            ("Sonalika", "6205-2RS", "2025-10", 520), ("Sonalika", "6205-2RS", "2025-11", 580),
-            ("Sonalika", "6205-2RS", "2025-12", 650), ("Sonalika", "6205-2RS", "2026-01", 720),
-            ("Sonalika", "6205-2RS", "2026-02", 800), ("Sonalika", "6205-2RS", "2026-03", 920),
-            ("Sonalika", "6206-ZZ",  "2025-04", 280), ("Sonalika", "6206-ZZ",  "2025-05", 310),
-            ("Sonalika", "6206-ZZ",  "2025-06", 340), ("Sonalika", "6206-ZZ",  "2025-07", 365),
-            ("Sonalika", "6206-ZZ",  "2025-08", 375), ("Sonalika", "6206-ZZ",  "2025-09", 380),
-            ("Sonalika", "6206-ZZ",  "2025-10", 380), ("Sonalika", "6206-ZZ",  "2025-11", 420),
-            ("Sonalika", "6206-ZZ",  "2025-12", 480), ("Sonalika", "6206-ZZ",  "2026-01", 540),
-            ("Sonalika", "6206-ZZ",  "2026-02", 620), ("Sonalika", "6206-ZZ",  "2026-03", 680),
-            ("Sonalika", "6207-RS",  "2025-04", 170), ("Sonalika", "6207-RS",  "2025-05", 195),
-            ("Sonalika", "6207-RS",  "2025-06", 215), ("Sonalika", "6207-RS",  "2025-07", 235),
-            ("Sonalika", "6207-RS",  "2025-08", 245), ("Sonalika", "6207-RS",  "2025-09", 250),
-            ("Sonalika", "6207-RS",  "2025-10", 250), ("Sonalika", "6207-RS",  "2025-11", 290),
-            ("Sonalika", "6207-RS",  "2025-12", 340), ("Sonalika", "6207-RS",  "2026-01", 410),
-            ("Sonalika", "6207-RS",  "2026-02", 480), ("Sonalika", "6207-RS",  "2026-03", 550),
-            ("Sonalika", "6209-ZZ",  "2025-04", 120), ("Sonalika", "6209-ZZ",  "2025-05", 135),
-            ("Sonalika", "6209-ZZ",  "2025-06", 150), ("Sonalika", "6209-ZZ",  "2025-07", 168),
-            ("Sonalika", "6209-ZZ",  "2025-08", 180), ("Sonalika", "6209-ZZ",  "2025-09", 190),
-            ("Sonalika", "6209-ZZ",  "2025-10", 200), ("Sonalika", "6209-ZZ",  "2025-11", 225),
-            ("Sonalika", "6209-ZZ",  "2025-12", 260), ("Sonalika", "6209-ZZ",  "2026-01", 300),
-            ("Sonalika", "6209-ZZ",  "2026-02", 345), ("Sonalika", "6209-ZZ",  "2026-03", 390),
-            ("Sonalika", "30205",    "2025-04", 100), ("Sonalika", "30205",    "2025-05", 115),
-            ("Sonalika", "30205",    "2025-06", 125), ("Sonalika", "30205",    "2025-07", 138),
-            ("Sonalika", "30205",    "2025-08", 150), ("Sonalika", "30205",    "2025-09", 160),
-            ("Sonalika", "30205",    "2025-10", 170), ("Sonalika", "30205",    "2025-11", 195),
-            ("Sonalika", "30205",    "2025-12", 225), ("Sonalika", "30205",    "2026-01", 260),
-            ("Sonalika", "30205",    "2026-02", 295), ("Sonalika", "30205",    "2026-03", 335),
-            # ── TAFE ──────────────────────────────────────────────────────────
-            ("TAFE", "6205-2RS", "2025-04", 330), ("TAFE", "6205-2RS", "2025-05", 365),
-            ("TAFE", "6205-2RS", "2025-06", 395), ("TAFE", "6205-2RS", "2025-07", 420),
-            ("TAFE", "6205-2RS", "2025-08", 440), ("TAFE", "6205-2RS", "2025-09", 450),
-            ("TAFE", "6205-2RS", "2025-10", 420), ("TAFE", "6205-2RS", "2025-11", 480),
-            ("TAFE", "6205-2RS", "2025-12", 540), ("TAFE", "6205-2RS", "2026-01", 620),
-            ("TAFE", "6205-2RS", "2026-02", 680), ("TAFE", "6205-2RS", "2026-03", 750),
-            ("TAFE", "6206-ZZ",  "2025-04", 230), ("TAFE", "6206-ZZ",  "2025-05", 258),
-            ("TAFE", "6206-ZZ",  "2025-06", 280), ("TAFE", "6206-ZZ",  "2025-07", 295),
-            ("TAFE", "6206-ZZ",  "2025-08", 305), ("TAFE", "6206-ZZ",  "2025-09", 310),
-            ("TAFE", "6206-ZZ",  "2025-10", 310), ("TAFE", "6206-ZZ",  "2025-11", 350),
-            ("TAFE", "6206-ZZ",  "2025-12", 400), ("TAFE", "6206-ZZ",  "2026-01", 480),
-            ("TAFE", "6206-ZZ",  "2026-02", 540), ("TAFE", "6206-ZZ",  "2026-03", 600),
-            ("TAFE", "6207-RS",  "2025-04", 140), ("TAFE", "6207-RS",  "2025-05", 162),
-            ("TAFE", "6207-RS",  "2025-06", 180), ("TAFE", "6207-RS",  "2025-07", 196),
-            ("TAFE", "6207-RS",  "2025-08", 205), ("TAFE", "6207-RS",  "2025-09", 210),
-            ("TAFE", "6207-RS",  "2025-10", 200), ("TAFE", "6207-RS",  "2025-11", 240),
-            ("TAFE", "6207-RS",  "2025-12", 290), ("TAFE", "6207-RS",  "2026-01", 350),
-            ("TAFE", "6207-RS",  "2026-02", 410), ("TAFE", "6207-RS",  "2026-03", 480),
-            ("TAFE", "6210-RS",  "2025-04", 95),  ("TAFE", "6210-RS",  "2025-05", 108),
-            ("TAFE", "6210-RS",  "2025-06", 120), ("TAFE", "6210-RS",  "2025-07", 132),
-            ("TAFE", "6210-RS",  "2025-08", 142), ("TAFE", "6210-RS",  "2025-09", 150),
-            ("TAFE", "6210-RS",  "2025-10", 158), ("TAFE", "6210-RS",  "2025-11", 178),
-            ("TAFE", "6210-RS",  "2025-12", 205), ("TAFE", "6210-RS",  "2026-01", 235),
-            ("TAFE", "6210-RS",  "2026-02", 270), ("TAFE", "6210-RS",  "2026-03", 310),
-            # ── Escorts Agri Machinery ────────────────────────────────────────
-            ("Escorts Agri Machinery", "6205-2RS", "2025-04", 290), ("Escorts Agri Machinery", "6205-2RS", "2025-05", 320),
-            ("Escorts Agri Machinery", "6205-2RS", "2025-06", 350), ("Escorts Agri Machinery", "6205-2RS", "2025-07", 375),
-            ("Escorts Agri Machinery", "6205-2RS", "2025-08", 395), ("Escorts Agri Machinery", "6205-2RS", "2025-09", 410),
-            ("Escorts Agri Machinery", "6205-2RS", "2025-10", 430), ("Escorts Agri Machinery", "6205-2RS", "2025-11", 470),
-            ("Escorts Agri Machinery", "6205-2RS", "2025-12", 520), ("Escorts Agri Machinery", "6205-2RS", "2026-01", 580),
-            ("Escorts Agri Machinery", "6205-2RS", "2026-02", 640), ("Escorts Agri Machinery", "6205-2RS", "2026-03", 710),
-            ("Escorts Agri Machinery", "6206-ZZ",  "2025-04", 200), ("Escorts Agri Machinery", "6206-ZZ",  "2025-05", 220),
-            ("Escorts Agri Machinery", "6206-ZZ",  "2025-06", 240), ("Escorts Agri Machinery", "6206-ZZ",  "2025-07", 258),
-            ("Escorts Agri Machinery", "6206-ZZ",  "2025-08", 270), ("Escorts Agri Machinery", "6206-ZZ",  "2025-09", 278),
-            ("Escorts Agri Machinery", "6206-ZZ",  "2025-10", 285), ("Escorts Agri Machinery", "6206-ZZ",  "2025-11", 315),
-            ("Escorts Agri Machinery", "6206-ZZ",  "2025-12", 360), ("Escorts Agri Machinery", "6206-ZZ",  "2026-01", 410),
-            ("Escorts Agri Machinery", "6206-ZZ",  "2026-02", 460), ("Escorts Agri Machinery", "6206-ZZ",  "2026-03", 510),
-            ("Escorts Agri Machinery", "6301-2RS", "2025-04", 160), ("Escorts Agri Machinery", "6301-2RS", "2025-05", 178),
-            ("Escorts Agri Machinery", "6301-2RS", "2025-06", 195), ("Escorts Agri Machinery", "6301-2RS", "2025-07", 210),
-            ("Escorts Agri Machinery", "6301-2RS", "2025-08", 222), ("Escorts Agri Machinery", "6301-2RS", "2025-09", 230),
-            ("Escorts Agri Machinery", "6301-2RS", "2025-10", 240), ("Escorts Agri Machinery", "6301-2RS", "2025-11", 268),
-            ("Escorts Agri Machinery", "6301-2RS", "2025-12", 305), ("Escorts Agri Machinery", "6301-2RS", "2026-01", 348),
-            ("Escorts Agri Machinery", "6301-2RS", "2026-02", 395), ("Escorts Agri Machinery", "6301-2RS", "2026-03", 445),
-            # ── John Deere India ──────────────────────────────────────────────
+            # ── AgroNova ──────────────────────────────────────────────
+            ("AgroNova", "6205-2RS", "2025-04", 540), ("AgroNova", "6205-2RS", "2025-05", 580),
+            ("AgroNova", "6205-2RS", "2025-06", 620), ("AgroNova", "6205-2RS", "2025-07", 670),
+            ("AgroNova", "6205-2RS", "2025-08", 700), ("AgroNova", "6205-2RS", "2025-09", 730),
+            ("AgroNova", "6205-2RS", "2025-10", 650), ("AgroNova", "6205-2RS", "2025-11", 720),
+            ("AgroNova", "6205-2RS", "2025-12", 850), ("AgroNova", "6205-2RS", "2026-01", 920),
+            ("AgroNova", "6205-2RS", "2026-02", 1100),("AgroNova", "6205-2RS", "2026-03", 1250),
+            ("AgroNova", "6206-ZZ",  "2025-04", 320), ("AgroNova", "6206-ZZ",  "2025-05", 360),
+            ("AgroNova", "6206-ZZ",  "2025-06", 390), ("AgroNova", "6206-ZZ",  "2025-07", 410),
+            ("AgroNova", "6206-ZZ",  "2025-08", 430), ("AgroNova", "6206-ZZ",  "2025-09", 440),
+            ("AgroNova", "6206-ZZ",  "2025-10", 425), ("AgroNova", "6206-ZZ",  "2025-11", 480),
+            ("AgroNova", "6206-ZZ",  "2025-12", 520), ("AgroNova", "6206-ZZ",  "2026-01", 650),
+            ("AgroNova", "6206-ZZ",  "2026-02", 720), ("AgroNova", "6206-ZZ",  "2026-03", 800),
+            ("AgroNova", "6207-RS",  "2025-04", 210), ("AgroNova", "6207-RS",  "2025-05", 240),
+            ("AgroNova", "6207-RS",  "2025-06", 270), ("AgroNova", "6207-RS",  "2025-07", 290),
+            ("AgroNova", "6207-RS",  "2025-08", 300), ("AgroNova", "6207-RS",  "2025-09", 310),
+            ("AgroNova", "6207-RS",  "2025-10", 310), ("AgroNova", "6207-RS",  "2025-11", 360),
+            ("AgroNova", "6207-RS",  "2025-12", 410), ("AgroNova", "6207-RS",  "2026-01", 480),
+            ("AgroNova", "6207-RS",  "2026-02", 550), ("AgroNova", "6207-RS",  "2026-03", 620),
+            ("AgroNova", "6208-2RS", "2025-04", 180), ("AgroNova", "6208-2RS", "2025-05", 200),
+            ("AgroNova", "6208-2RS", "2025-06", 220), ("AgroNova", "6208-2RS", "2025-07", 245),
+            ("AgroNova", "6208-2RS", "2025-08", 260), ("AgroNova", "6208-2RS", "2025-09", 275),
+            ("AgroNova", "6208-2RS", "2025-10", 290), ("AgroNova", "6208-2RS", "2025-11", 320),
+            ("AgroNova", "6208-2RS", "2025-12", 370), ("AgroNova", "6208-2RS", "2026-01", 420),
+            ("AgroNova", "6208-2RS", "2026-02", 480), ("AgroNova", "6208-2RS", "2026-03", 540),
+            ("AgroNova", "30205",    "2025-04", 140), ("AgroNova", "30205",    "2025-05", 155),
+            ("AgroNova", "30205",    "2025-06", 170), ("AgroNova", "30205",    "2025-07", 185),
+            ("AgroNova", "30205",    "2025-08", 200), ("AgroNova", "30205",    "2025-09", 215),
+            ("AgroNova", "30205",    "2025-10", 230), ("AgroNova", "30205",    "2025-11", 260),
+            ("AgroNova", "30205",    "2025-12", 300), ("AgroNova", "30205",    "2026-01", 340),
+            ("AgroNova", "30205",    "2026-02", 390), ("AgroNova", "30205",    "2026-03", 440),
+            # ── TractoMax ──────────────────────────────────────────────────────
+            ("TractoMax", "6205-2RS", "2025-04", 410), ("TractoMax", "6205-2RS", "2025-05", 450),
+            ("TractoMax", "6205-2RS", "2025-06", 490), ("TractoMax", "6205-2RS", "2025-07", 520),
+            ("TractoMax", "6205-2RS", "2025-08", 545), ("TractoMax", "6205-2RS", "2025-09", 560),
+            ("TractoMax", "6205-2RS", "2025-10", 520), ("TractoMax", "6205-2RS", "2025-11", 580),
+            ("TractoMax", "6205-2RS", "2025-12", 650), ("TractoMax", "6205-2RS", "2026-01", 720),
+            ("TractoMax", "6205-2RS", "2026-02", 800), ("TractoMax", "6205-2RS", "2026-03", 920),
+            ("TractoMax", "6206-ZZ",  "2025-04", 280), ("TractoMax", "6206-ZZ",  "2025-05", 310),
+            ("TractoMax", "6206-ZZ",  "2025-06", 340), ("TractoMax", "6206-ZZ",  "2025-07", 365),
+            ("TractoMax", "6206-ZZ",  "2025-08", 375), ("TractoMax", "6206-ZZ",  "2025-09", 380),
+            ("TractoMax", "6206-ZZ",  "2025-10", 380), ("TractoMax", "6206-ZZ",  "2025-11", 420),
+            ("TractoMax", "6206-ZZ",  "2025-12", 480), ("TractoMax", "6206-ZZ",  "2026-01", 540),
+            ("TractoMax", "6206-ZZ",  "2026-02", 620), ("TractoMax", "6206-ZZ",  "2026-03", 680),
+            ("TractoMax", "6207-RS",  "2025-04", 170), ("TractoMax", "6207-RS",  "2025-05", 195),
+            ("TractoMax", "6207-RS",  "2025-06", 215), ("TractoMax", "6207-RS",  "2025-07", 235),
+            ("TractoMax", "6207-RS",  "2025-08", 245), ("TractoMax", "6207-RS",  "2025-09", 250),
+            ("TractoMax", "6207-RS",  "2025-10", 250), ("TractoMax", "6207-RS",  "2025-11", 290),
+            ("TractoMax", "6207-RS",  "2025-12", 340), ("TractoMax", "6207-RS",  "2026-01", 410),
+            ("TractoMax", "6207-RS",  "2026-02", 480), ("TractoMax", "6207-RS",  "2026-03", 550),
+            ("TractoMax", "6209-ZZ",  "2025-04", 120), ("TractoMax", "6209-ZZ",  "2025-05", 135),
+            ("TractoMax", "6209-ZZ",  "2025-06", 150), ("TractoMax", "6209-ZZ",  "2025-07", 168),
+            ("TractoMax", "6209-ZZ",  "2025-08", 180), ("TractoMax", "6209-ZZ",  "2025-09", 190),
+            ("TractoMax", "6209-ZZ",  "2025-10", 200), ("TractoMax", "6209-ZZ",  "2025-11", 225),
+            ("TractoMax", "6209-ZZ",  "2025-12", 260), ("TractoMax", "6209-ZZ",  "2026-01", 300),
+            ("TractoMax", "6209-ZZ",  "2026-02", 345), ("TractoMax", "6209-ZZ",  "2026-03", 390),
+            ("TractoMax", "30205",    "2025-04", 100), ("TractoMax", "30205",    "2025-05", 115),
+            ("TractoMax", "30205",    "2025-06", 125), ("TractoMax", "30205",    "2025-07", 138),
+            ("TractoMax", "30205",    "2025-08", 150), ("TractoMax", "30205",    "2025-09", 160),
+            ("TractoMax", "30205",    "2025-10", 170), ("TractoMax", "30205",    "2025-11", 195),
+            ("TractoMax", "30205",    "2025-12", 225), ("TractoMax", "30205",    "2026-01", 260),
+            ("TractoMax", "30205",    "2026-02", 295), ("TractoMax", "30205",    "2026-03", 335),
+            # ── FarmX ──────────────────────────────────────────────────────────
+            ("FarmX", "6205-2RS", "2025-04", 330), ("FarmX", "6205-2RS", "2025-05", 365),
+            ("FarmX", "6205-2RS", "2025-06", 395), ("FarmX", "6205-2RS", "2025-07", 420),
+            ("FarmX", "6205-2RS", "2025-08", 440), ("FarmX", "6205-2RS", "2025-09", 450),
+            ("FarmX", "6205-2RS", "2025-10", 420), ("FarmX", "6205-2RS", "2025-11", 480),
+            ("FarmX", "6205-2RS", "2025-12", 540), ("FarmX", "6205-2RS", "2026-01", 620),
+            ("FarmX", "6205-2RS", "2026-02", 680), ("FarmX", "6205-2RS", "2026-03", 750),
+            ("FarmX", "6206-ZZ",  "2025-04", 230), ("FarmX", "6206-ZZ",  "2025-05", 258),
+            ("FarmX", "6206-ZZ",  "2025-06", 280), ("FarmX", "6206-ZZ",  "2025-07", 295),
+            ("FarmX", "6206-ZZ",  "2025-08", 305), ("FarmX", "6206-ZZ",  "2025-09", 310),
+            ("FarmX", "6206-ZZ",  "2025-10", 310), ("FarmX", "6206-ZZ",  "2025-11", 350),
+            ("FarmX", "6206-ZZ",  "2025-12", 400), ("FarmX", "6206-ZZ",  "2026-01", 480),
+            ("FarmX", "6206-ZZ",  "2026-02", 540), ("FarmX", "6206-ZZ",  "2026-03", 600),
+            ("FarmX", "6207-RS",  "2025-04", 140), ("FarmX", "6207-RS",  "2025-05", 162),
+            ("FarmX", "6207-RS",  "2025-06", 180), ("FarmX", "6207-RS",  "2025-07", 196),
+            ("FarmX", "6207-RS",  "2025-08", 205), ("FarmX", "6207-RS",  "2025-09", 210),
+            ("FarmX", "6207-RS",  "2025-10", 200), ("FarmX", "6207-RS",  "2025-11", 240),
+            ("FarmX", "6207-RS",  "2025-12", 290), ("FarmX", "6207-RS",  "2026-01", 350),
+            ("FarmX", "6207-RS",  "2026-02", 410), ("FarmX", "6207-RS",  "2026-03", 480),
+            ("FarmX", "6210-RS",  "2025-04", 95),  ("FarmX", "6210-RS",  "2025-05", 108),
+            ("FarmX", "6210-RS",  "2025-06", 120), ("FarmX", "6210-RS",  "2025-07", 132),
+            ("FarmX", "6210-RS",  "2025-08", 142), ("FarmX", "6210-RS",  "2025-09", 150),
+            ("FarmX", "6210-RS",  "2025-10", 158), ("FarmX", "6210-RS",  "2025-11", 178),
+            ("FarmX", "6210-RS",  "2025-12", 205), ("FarmX", "6210-RS",  "2026-01", 235),
+            ("FarmX", "6210-RS",  "2026-02", 270), ("FarmX", "6210-RS",  "2026-03", 310),
+            # ── GreenField Motors ────────────────────────────────────────
+            ("GreenField Motors", "6205-2RS", "2025-04", 290), ("GreenField Motors", "6205-2RS", "2025-05", 320),
+            ("GreenField Motors", "6205-2RS", "2025-06", 350), ("GreenField Motors", "6205-2RS", "2025-07", 375),
+            ("GreenField Motors", "6205-2RS", "2025-08", 395), ("GreenField Motors", "6205-2RS", "2025-09", 410),
+            ("GreenField Motors", "6205-2RS", "2025-10", 430), ("GreenField Motors", "6205-2RS", "2025-11", 470),
+            ("GreenField Motors", "6205-2RS", "2025-12", 520), ("GreenField Motors", "6205-2RS", "2026-01", 580),
+            ("GreenField Motors", "6205-2RS", "2026-02", 640), ("GreenField Motors", "6205-2RS", "2026-03", 710),
+            ("GreenField Motors", "6206-ZZ",  "2025-04", 200), ("GreenField Motors", "6206-ZZ",  "2025-05", 220),
+            ("GreenField Motors", "6206-ZZ",  "2025-06", 240), ("GreenField Motors", "6206-ZZ",  "2025-07", 258),
+            ("GreenField Motors", "6206-ZZ",  "2025-08", 270), ("GreenField Motors", "6206-ZZ",  "2025-09", 278),
+            ("GreenField Motors", "6206-ZZ",  "2025-10", 285), ("GreenField Motors", "6206-ZZ",  "2025-11", 315),
+            ("GreenField Motors", "6206-ZZ",  "2025-12", 360), ("GreenField Motors", "6206-ZZ",  "2026-01", 410),
+            ("GreenField Motors", "6206-ZZ",  "2026-02", 460), ("GreenField Motors", "6206-ZZ",  "2026-03", 510),
+            ("GreenField Motors", "6301-2RS", "2025-04", 160), ("GreenField Motors", "6301-2RS", "2025-05", 178),
+            ("GreenField Motors", "6301-2RS", "2025-06", 195), ("GreenField Motors", "6301-2RS", "2025-07", 210),
+            ("GreenField Motors", "6301-2RS", "2025-08", 222), ("GreenField Motors", "6301-2RS", "2025-09", 230),
+            ("GreenField Motors", "6301-2RS", "2025-10", 240), ("GreenField Motors", "6301-2RS", "2025-11", 268),
+            ("GreenField Motors", "6301-2RS", "2025-12", 305), ("GreenField Motors", "6301-2RS", "2026-01", 348),
+            ("GreenField Motors", "6301-2RS", "2026-02", 395), ("GreenField Motors", "6301-2RS", "2026-03", 445),
             ("John Deere India", "6205-2RS", "2025-04", 520), ("John Deere India", "6205-2RS", "2025-05", 565),
             ("John Deere India", "6205-2RS", "2025-06", 610), ("John Deere India", "6205-2RS", "2025-07", 650),
             ("John Deere India", "6205-2RS", "2025-08", 680), ("John Deere India", "6205-2RS", "2025-09", 700),
@@ -875,51 +874,40 @@ def segment_head_page():
         col1, col2 = st.columns([2, 2])
         
         with col1:
-            # Get all designations
             all_designations = get_all_designations()
-            selected_designations = st.multiselect(
-                "Select Bearing Designations",
-                all_designations,
-                default=all_designations,
-                key="sh_designations"
+            selected_designation = st.selectbox(
+                "Select Bearing Designation",
+                ["-- Select --"] + all_designations,
+                index=0,
+                key="sh_designation_dropdown"
             )
-        
+
         with col2:
             customers = get_all_customers()
-            selected_customers = st.multiselect(
-                "Filter by Customers",
-                customers,
-                default=customers,
-                key="sh_customers"
+            selected_customer = st.selectbox(
+                "Filter by Customer",
+                ["-- Select --"] + customers,
+                index=0,
+                key="sh_customer_dropdown"
             )
-        
-        if selected_designations and selected_customers:
-            # Get filtered data
-            filtered_df = get_filtered_sales_data(selected_customers, selected_designations)
-            
+
+        # Only filter if both dropdowns have a selection
+        if selected_designation != "-- Select --" and selected_customer != "-- Select --":
+            filtered_df = get_filtered_sales_data([selected_customer], [selected_designation])
             if len(filtered_df) > 0:
-                # Trend per product (designation)
                 st.subheader(" Trend by Bearing Designation")
-                
-                for designation in selected_designations:
-                    des_data = filtered_df[filtered_df['designation'] == designation].sort_values('month')
-                    if len(des_data) > 0:
-                        col1, col2 = st.columns([3, 1])
-                        
-                        with col1:
-                            st.line_chart(des_data.set_index('month')['volume'], use_container_width=True)
-                        
-                        with col2:
-                            avg_vol = des_data['volume'].mean()
-                            max_vol = des_data['volume'].max()
-                            min_vol = des_data['volume'].min()
-                            trend_pct = ((des_data.iloc[-1]['volume'] - des_data.iloc[0]['volume']) / des_data.iloc[0]['volume'] * 100) if len(des_data) > 1 else 0
-                            
-                            st.metric(f"{designation}", f"{avg_vol:.0f}", f"Trend: {trend_pct:+.1f}%")
-                        
-                        st.caption(f"Range: {min_vol:.0f} - {max_vol:.0f} units | Months: {len(des_data)}")
-                        st.divider()
-                
+                des_data = filtered_df.sort_values('month')
+                col1, col2 = st.columns([3, 1])
+                with col1:
+                    st.line_chart(des_data.set_index('month')['volume'], use_container_width=True)
+                with col2:
+                    avg_vol = des_data['volume'].mean()
+                    max_vol = des_data['volume'].max()
+                    min_vol = des_data['volume'].min()
+                    trend_pct = ((des_data.iloc[-1]['volume'] - des_data.iloc[0]['volume']) / des_data.iloc[0]['volume'] * 100) if len(des_data) > 1 else 0
+                    st.metric(f"{selected_designation}", f"{avg_vol:.0f}", f"Trend: {trend_pct:+.1f}%")
+                st.caption(f"Range: {min_vol:.0f} - {max_vol:.0f} units | Months: {len(des_data)}")
+                st.divider()
                 # Monthly volume breakdown by designation
                 st.subheader(" Monthly Volume Heatmap by Designation")
                 pivot_data = filtered_df.pivot_table(
@@ -931,6 +919,8 @@ def segment_head_page():
                 st.dataframe(pivot_data, use_container_width=True)
             else:
                 st.warning("⚠️ No data available for selected filters")
+        else:
+            st.info("Please select both a bearing designation and a customer to view trends.")
     
     # TAB 2: Per-Designation Analysis
     with tab2:
